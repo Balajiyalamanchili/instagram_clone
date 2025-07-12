@@ -3,7 +3,6 @@
     padding: 0;
     /* background-color: black; */
     /* background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%); */
-
     color: rgb(255, 255, 255);
 }
 
@@ -13,7 +12,8 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
+    /* width: 100vw; */
     background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat;
     /* background-size: 400% 400%; */
     animation: darkInstaGradient 30s ease infinite;
@@ -21,8 +21,7 @@ body {
     /* optional for light text */
 
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
 }
 
 @keyframes darkInstaGradient {
@@ -38,48 +37,7 @@ body {
         background-position: 0% 50%;
     }
 }
-
-/* 
-body {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat ;
-    /* height: 100vh; */
-/* height: 100vh; */
-
-section {
-    width: 100%;
-    display: flex;
-    margin-top: 50px;
-}
-
-#left-box {
-    width: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    display: none;
-}
-
-img {
-    display: flex;
-    width: 40vw;
-    max-height: 50vh;
-    /* height: 50vw; */
-}
-
-#right-box {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.container,
-.signup {
+.container{
     background-color: rgba(255, 255, 255, 0.1);
     /* transparent white */
     color: white;
@@ -87,72 +45,79 @@ img {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    width: 310px;
-    margin-bottom: 10px;
+    /* width: 310px; */
+    /* width: 100%; */
     align-items: center;
     backdrop-filter: blur(10px);
     /* adds glass effect */
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
-
 h1 {
     font: normal normal normal 2.5rem/2.88rem Flood Std;
 }
-
-form {
+#nav-bar{
+    background-color: rgba(255, 255, 255, 0.1);
+    /* transparent white */
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    gap: 20px;
+    /* width: 310px; */
+    width: 100%;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    /* adds glass effect */
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: row;
+    position: fixed;
+    justify-content: space-around;
+    bottom: 0;
+    /* margin-bottom: 10px; */
 }
 
-#login {
-    text-align: center;
-    font-style: italic;
-    font: bold;
-    font-weight: 100;
-    color: rgb(17, 14, 14);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    background-color: rgba(255, 0, 0, 0.8);
-    padding: 5px;
+a{
+    display: flex;
+    width: 20%;
+    text-decoration: none;
 }
-
-input {
+button {
     margin: 5px 0;
     padding: 10px;
-    width: 90%;
+    width: 100%;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
-    align-self: center;
+    /* align-self: center; */
     background-color: rgba(255, 255, 255, 0.1);
     /* translucent background */
-    color: #fff;
+    color: #000000;
     font-size: 1rem;
     backdrop-filter: blur(5px);
     /* smooth glass effect */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-button {
-    padding: 10px;
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(79, 49, 148);
-    color: white;
-    font-weight: bold;
     cursor: pointer;
+    display: flex;
+}
+button:hover{
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+button:focus{
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(19, 14, 14, 0.2);
 }
 
-a {
-    text-decoration: none;
-    color: blue;
-}
 
 
 
+
+/* 
 @media(min-width : 600px) {
     #left-box {
         width: 50%;
@@ -164,4 +129,4 @@ a {
     #right-box {
         width: 100%;
     }
-}
+} */
