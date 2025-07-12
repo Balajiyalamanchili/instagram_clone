@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    <title>Login</title>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous"> -->
+    {% block head %}
+        <title>Login</title>
+    {% endblock %}
 </head>
 
 <body>
@@ -20,7 +22,8 @@
     </section>
     <nav id="nav-bar">
         <a href="{% url 'logout' %}"><button class="nav-buttons">Home</button></a>
-        <a href=""><button class="nav-buttons">Reels</button></a>  
+        <a href=""><button class="nav-buttons">Reels</button></a>
+        <a href=""><button class="nav-buttons">Add</button></a>
         <a href=""><button class="nav-buttons">Search</button></a>
         <a href="{% url 'profile' %}"><button class="nav-buttons">Profile</button></a>
     </nav>

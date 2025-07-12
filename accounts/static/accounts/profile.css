@@ -1,0 +1,75 @@
+/*Profile page*/
+.details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 120px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.profile-pic {
+    width: 10%;
+    height: 90%;
+    display: flex;
+}
+
+img {
+    border-radius: 100px;
+    border: 1px solid white;
+}
+
+.user-details {
+    width: 60%;
+    height: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.username-edit {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.profile-edit {
+    margin: 0;
+    align-self: start;
+    color: aliceblue;
+}
+
+.insights {
+    display: flex;
+    justify-content: space-between;
+}
+
+.insights-boxes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.posts{
+    margin-top: 10px;
+}
+
+
+
+
+@media(min-width : 600px) {
+    .details {
+        height: 150px;
+        width: 80%;
+    }
+    .profile-pic{
+        width: 30%;
+    }
+    .user-details{
+        width: 70%;
+    }
+    p{
+        font-size: 1.5em;
+    }
+}
