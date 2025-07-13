@@ -1,5 +1,7 @@
 asgiref==3.9.1
+cloudinary
 Django==5.2.4
+django-cloudinary-storage
 pillow==11.3.0
 psycopg==3.2.9
 python-dotenv==1.1.1

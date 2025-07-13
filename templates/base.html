@@ -21,10 +21,10 @@
         {% endblock %}
     </section>
     <nav id="nav-bar">
-        <a href="{% url 'logout' %}"><button class="nav-buttons">Home</button></a>
+        <a href="{% url 'show_posts' %}"><button class="nav-buttons">Home</button></a>
         <a href=""><button class="nav-buttons">Reels</button></a>
         <a href=""><button class="nav-buttons">Add</button></a>
-        <a href=""><button class="nav-buttons">Search</button></a>
+        <a href="{% url 'logout' %}"><button class="nav-buttons">Logout</button></a>
         <a href="{% url 'profile' %}"><button class="nav-buttons">Profile</button></a>
     </nav>
 </body>

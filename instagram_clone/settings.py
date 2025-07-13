@@ -42,6 +42,12 @@ INSTALLED_APPS = [
 
     #My Apps
     'accounts',
+    'posts',
+
+
+    #  'cloudinary',
+    # 'cloudinary_storage',
+    # 'storages',
 ]
 
 MIDDLEWARE = [
@@ -134,13 +140,53 @@ STATICFILES_DIRS = [
 
 # settings.py
 
-import os
+# import os
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+# # Media settings for Cloudinary
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# # CLOUDINARY_STORAGE = {
+# #     'CLOUD_NAME': 'dtpo9ceis',  # use your actual cloud name
+# #     'API_KEY': '816594388236771',
+# #     'API_SECRET': '0BhDbt1KihIabvvSgn-IbcbiQio',
+# # }
+
+
+
+
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+#     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+#     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+# }
+# # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
+]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dtpo9ceis',
+    'API_KEY': '816594388236771',
+    'API_SECRET': '0BhDbt1KihIabvvSgn-IbcbiQio',
+}
+
+print("Using file storage:", DEFAULT_FILE_STORAGE)

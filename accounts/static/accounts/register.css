@@ -13,13 +13,12 @@
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat;
     /* background-size: 400% 400%; */
     animation: darkInstaGradient 30s ease infinite;
     color: #fff;
     /* optional for light text */
-
     display: flex;
     justify-content: center;
 
@@ -39,14 +38,6 @@ body {
     }
 }
 
-/* 
-body {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat ;
-    /* height: 100vh; */
-/* height: 100vh; */
 
 section {
     width: 100%;
@@ -104,7 +95,7 @@ form {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    gap: 20px;
+    gap: 10px;
 }
 
 #login {
@@ -149,6 +140,41 @@ button {
 a {
     text-decoration: none;
     color: blue;
+
+}
+
+
+
+span.helptext {
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    font-style: italic;
+}
+
+ul {
+  display: contents;
+  list-style: none;
+}
+
+
+ul.errorlist {
+    display: contents;
+    list-style: none;
+    padding: 0;
+    color: rgb(34, 34, 34);
+    /* margin-bottom: 5px; */
+    font-weight: bold;
+}
+
+ul.errorlist li {
+    /* background-color: red; */
+    color: #ffffff;
+    text-decoration: underline red;
+    /* border: #fff 1px solid; */
+}
+
+input:invalid {
+    border: 1px solid red;
 }
 
 

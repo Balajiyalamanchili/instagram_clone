@@ -2,10 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+from cloudinary.models import CloudinaryField
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     bio = models.CharField(blank=True,max_length=10)
-    profile_pic = models.ImageField(upload_to='profile_pics',blank=True)
+    profile_pic = CloudinaryField('image', blank=True, null=True)
     followers = models.ManyToManyField(User,related_name='followers',blank=True)
     following = models.ManyToManyField(User,related_name='following',blank=True)
 
