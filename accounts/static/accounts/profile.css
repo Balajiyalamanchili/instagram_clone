@@ -1,41 +1,43 @@
 /*Profile page*/
 .details {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 120px;
     width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    gap: 10px;
+    border-radius: 10px;
     justify-content: space-between;
 }
 
+
+
 .profile-pic {
-    width: 30%;
-    max-width: 120px;
+    width: 100px;
+    height: 100px;
     display: flex;
-    align-items: center; /* Center image vertically */
-    justify-content: center; /* Optional: center image horizontally */
 }
 
-
-img {
-    /* width: 50px;
-    height: 50px;
-    border-radius: 100px; */
-    border: 1px solid white;
-
+.profile-img {
     width: 100%;
+    border-radius: 100px;
+    border: 1px solid rgb(63, 60, 60);
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 100px;
 }
 
+
 .user-details {
-    width: 60%;
+    width: 70%;
     height: 100%;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 5px;
+}
+
+h3 {
+    align-self: center;
 }
 
 .username-edit {
@@ -44,11 +46,15 @@ img {
 
 }
 
+.edit_profile_anchortag{
+    justify-content: flex-end;
+}
+
 .profile-edit {
     margin: 0;
-    align-self: start;
-    color: aliceblue;
+    color: rgb(255, 255, 255);
 }
+
 
 .insights {
     display: flex;
@@ -61,27 +67,51 @@ img {
     justify-content: center;
     align-items: center;
 }
-.posts{
-    margin-top: 10px;
+
+.posts {
+    width: 100%;
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    overflow-y: auto;
+    margin-top: 20px;
+    /* border-top: 2px rgb(255, 255, 255) solid; */
 }
 
+.post-pic {
+    /* margin-top: 10px; */
+    width: 33.33%;
+    display: flex;
+}
 
+.posted-img {
+    width: 100%;
+    /* border: 1px solid rgb(112, 109, 109); */
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    /* border-radius: 10px; */
+}
 
-@media(min-width : 600px) {
-    .details {
-        height: 150px;
-        width: 80%;
+@media(min-width : 426px) {
+    .posts {
+        overflow: auto;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* Internet Explorer 10+ */
     }
 
-    .profile-pic {
-        width: 30%;
+    .posts::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
     }
 
-    .user-details {
-        width: 70%;
-    }
-
-    p {
-        font-size: 1.5em;
+    .profile-edit {
+        margin: 0;
+        width: auto;
+        align-self: end;
+        color: rgb(255, 255, 255);
     }
 }
