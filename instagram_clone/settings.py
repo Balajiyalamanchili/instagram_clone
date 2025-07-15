@@ -25,9 +25,10 @@ load_dotenv(BASE_DIR/'.env')
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
+
 
 
 # Application definition
@@ -167,11 +168,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-# CLOUDINARY_STORAGE = {
-#     'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
-#     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
-#     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-# }
+
+
 # # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
@@ -183,10 +181,16 @@ INSTALLED_APPS += [
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': 'dtpo9ceis',
+#     'API_KEY': '816594388236771',
+#     'API_SECRET': '0BhDbt1KihIabvvSgn-IbcbiQio',
+# }
+
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dtpo9ceis',
-    'API_KEY': '816594388236771',
-    'API_SECRET': '0BhDbt1KihIabvvSgn-IbcbiQio',
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
 print("Using file storage:", DEFAULT_FILE_STORAGE)
