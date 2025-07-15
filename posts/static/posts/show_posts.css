@@ -115,7 +115,6 @@ h4{
 
 
 @media(min-width : 426px) {
-
     .posts {
         overflow: auto;
         scrollbar-width: none;

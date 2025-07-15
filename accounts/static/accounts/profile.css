@@ -85,6 +85,26 @@ h3 {
     /* margin-top: 10px; */
     width: 33.33%;
     display: flex;
+    position: relative;
+}
+
+
+.post-pic div {
+    display: none;
+    
+}
+
+.post-pic:hover div {
+    display: flex;
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* border-radius: 5px; */
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .posted-img {
@@ -94,6 +114,54 @@ h3 {
     object-fit: cover;
     /* border-radius: 10px; */
 }
+
+.settings{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.settings a{
+    display: flex;
+    width: 30%;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.settings button {
+    margin: 5px 0;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* translucent background */
+    color: #000000;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    /* smooth glass effect */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.settings button:hover{
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.settings button:focus{
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(19, 14, 14, 0.2);
+}
+
+
+
+
 
 @media(min-width : 426px) {
     .posts {

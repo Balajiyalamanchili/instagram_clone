@@ -26,11 +26,13 @@ def create_post(request):
 
 
 
-@login_required
+@login_required(login_url='login')
 def like_post(request, post_id):
     post = Posts.objects.get(id=post_id)
     if request.user in post.likes.all():
         post.likes.remove(request.user)
+        print(f"{request.user} unliked the post",post.likes,post.id)
     else:
         post.likes.add(request.user)
+        print(f"{request.user} liked the post")
     return redirect('show_posts')
