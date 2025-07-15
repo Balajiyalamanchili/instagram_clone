@@ -33,9 +33,9 @@
                     <form method="post" action="{% url 'like_post' post.id %}">
                         {% csrf_token %}
                         {% if user in post.likes.all %}
-                        <button class="liked" type="submit">❤️</button>
+                        <button class="liked" type="submit"><i class="fa-solid fa-heart gradient-icon"></i></button>
                         {% else %}
-                        <button class="notliked" type="submit">❤️</button>
+                        <button class="notliked" type="submit"><i class="fa-regular fa-heart"></i></button>
                         {% endif %}
                     </form>
                     <h4>{{ post.total_likes }} likes</h4>

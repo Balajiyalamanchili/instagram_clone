@@ -86,7 +86,7 @@ p {
 .like-comment-space {
     width: 95%;
     display: flex;
-    height: 50px;
+    height: 40px;
 }
 
 
@@ -99,21 +99,28 @@ h4 {
     color: black;
 }
 
-
-.liked {
-    /* width: 95%; */
-    color: red;
+.liked,
+.notliked {
     background-color: white;
     border: 0;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 
-.notliked {
-    /* width: 95%; */
-    color: rgb(179, 160, 160);
-    background-color: white;
-    border: 0;
+.liked i {
+    color: red;
     font-size: 20px;
+
+}
+.gradient-icon {
+    background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.notliked i {
+    color: rgb(179, 160, 160);
+    font-size: 20px;
+
 }
 
 
@@ -121,6 +128,16 @@ h4 {
     width: 40%;
     height: 100%;
 }
+
+.open-btn i {
+    font-size: 20px;
+    border: 0;
+    color: rgb(179, 160, 160);
+}
+
+
+
+
 
 
 /* Initially hidden */
@@ -134,10 +151,10 @@ h4 {
     box-sizing: border-box;
     /* height: 100vh; */
     /* background: rgba(255, 255, 255, 0.9); */
-    background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100% ) no-repeat;
+    background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat;
     z-index: 999;
     flex-direction: column;
-    
+
     height: 100%;
     /* background-color: rgba(255, 255, 255, 0.6); */
 }
@@ -150,7 +167,7 @@ h4 {
 
 
 
-.comments-head{
+.comments-head {
     width: 100%;
     height: 40px;
     display: flex;
@@ -158,7 +175,8 @@ h4 {
 }
 
 /* Buttons */
-.close-btn ,.submit-comment{
+.close-btn,
+.submit-comment {
     /* width: 100%; */
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 5px;
@@ -177,10 +195,11 @@ h4 {
 
 }
 
-.comments{
+.comments {
     gap: 10px;
 }
-.each-comment{
+
+.each-comment {
     margin-top: 5px;
 }
 
@@ -200,33 +219,18 @@ textarea {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.comments-box form{
+.comments-box form {
     display: flex;
     justify-content: space-between;
     /* position: absolute; */
     bottom: 0;
 }
 
-.post-wrapper .open-btn {
-    display: flex;
-    /* width: 95%; */
-    color: red;
-    /* background-color: rgb(196, 50, 50); */
-    border: 0;
-    font-size: 20px;
-    height: 33px;
-    align-items: center;
-}
 
-i {
-    display: inline-block;
-    /* width: 95%; */
-    color: rgb(170, 164, 164);
-    /* background-color: rgb(196, 50, 50); */
-    border: 0;
-    font-size: 18px;
-    height: 20px;
-}
+
+
+
+
 
 
 
