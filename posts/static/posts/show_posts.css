@@ -129,12 +129,10 @@ h4 {
     top: 0;
     left: 0;
     width: 100%;
-    max-width: 100%;
     box-sizing: border-box;
     /* height: 100vh; */
     /* background: rgba(255, 255, 255, 0.9); */
     background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100% ) no-repeat;
-
     z-index: 999;
     flex-direction: column;
     
@@ -203,6 +201,8 @@ textarea {
 .comments-box form{
     display: flex;
     justify-content: space-between;
+    /* position: absolute; */
+    bottom: 0;
 }
 
 .post-wrapper .open-btn {
