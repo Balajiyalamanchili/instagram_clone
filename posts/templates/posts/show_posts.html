@@ -4,8 +4,8 @@
 {% block head %}
 <title>Posts</title>
 <link rel="stylesheet" href="{% static 'posts/show_posts.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 {% endblock %}
-
 
 
 
@@ -28,16 +28,47 @@
                 {% endif %}
             </div>
 
-            <div class="like">
-                <form method="post" action="{% url 'like_post' post.id %}">
-                    {% csrf_token %}
-                    {% if user in post.likes.all %}
-                    <button class="liked" type="submit">❤️</button>
-                    {% else %}
-                    <button class="notliked" type="submit">❤️</button>
-                    {% endif %}
-                </form>
-                <h4>{{ post.total_likes }} likes</h4>
+            <div class="like-comment-space">
+                <div class="like">
+                    <form method="post" action="{% url 'like_post' post.id %}">
+                        {% csrf_token %}
+                        {% if user in post.likes.all %}
+                        <button class="liked" type="submit">❤️</button>
+                        {% else %}
+                        <button class="notliked" type="submit">❤️</button>
+                        {% endif %}
+                    </form>
+                    <h4>{{ post.total_likes }} likes</h4>
+                </div>
+
+
+                <div class="post-wrapper">
+                    <input type="checkbox" id="comment-toggle-{{post.id}}" hidden>
+                    <label for="comment-toggle-{{post.id}}" class="open-btn"><i class="fa-solid fa-comment"></i></label>
+                    <h4>{{ post.comments.count }} Comments</h4>
+                    <div class="comments-box">
+                        <div class="comments-head">
+                            <h3>Comments</h3>
+                            <label for="comment-toggle-{{post.id}}" class="close-btn">❌ Close</label>
+                        </div>
+                        <div class="comments">
+                            {% for comment in post.comments.all %}
+                            <p class="each-comment"><b>@{{ comment.user.username }}</b> : {{ comment.content }}</p>
+                            {% empty %}
+                            <p>No comments yet post one</p>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Comment Form -->
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value="{{ post.id }}">
+                            {{ comment_form.content }}
+                            <button type="submit" class="submit-comment">Comment</button>
+                        </form>
+
+                    </div>
+                </div>
             </div>
 
             <!-- <div class="like">

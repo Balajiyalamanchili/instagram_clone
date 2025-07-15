@@ -1,12 +1,25 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .forms import PostForm
+from .forms import PostForm,CommentsForm
 from .models import Posts
 # Create your views here.
 
 def show_posts(request):
     posts = Posts.objects.all().order_by('-created_at')
-    return render(request,'posts/show_posts.html',{'posts':posts})
+    comment_form = CommentsForm()
+
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Posts, id=post_id)
+        form = CommentsForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = request.user
+            comment.post = post
+            comment.save()
+            return redirect('show_posts')
+
+    return render(request,'posts/show_posts.html',{'posts':posts,'comment_form':comment_form})
 
 
 
