@@ -12,7 +12,7 @@
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
     /* width: 100vw; */
     background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat;
     /* background-color: #000000; */
@@ -26,6 +26,7 @@ body {
     align-items: center;
 
 }
+
 @keyframes darkInstaGradient {
     0% {
         background-position: 0% 50%;
@@ -42,13 +43,15 @@ body {
 
 section {
     width: 100%;
-    max-height: 94vh;
+    height: 100vh;
+    /* max-height: 94vh; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-sizing: border-box;
 }
 
-.container{
+.container {
     background-color: rgba(255, 255, 255, 0.1);
 
     /* transparent white */
@@ -63,8 +66,11 @@ section {
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     overflow-y: scroll;
+    scroll-behavior: smooth;
     width: 92%;
+    max-height: 96vh;
 }
+
 h1 {
     font: normal normal normal 2.5rem/2.88rem Flood Std;
     /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
@@ -72,14 +78,21 @@ h1 {
 
 
 
-#nav-bar{
+#nav-bar {
+
+    padding: 0 10px;
+    width: 92%;
+
+
+
     background-color: rgba(255, 255, 255, 0.1);
     /* transparent white */
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     flex-direction: column;
-    width: 100%;
+    /* width: 96.5%; */
+    /* align-self: center; */
     align-items: center;
     backdrop-filter: blur(10px);
     /* adds glass effect */
@@ -91,15 +104,18 @@ h1 {
     position: fixed;
     justify-content: space-around;
     bottom: 0;
+    /* height: 100vh; */
+    /* box-sizing: border-box; */
 }
 
-nav a{
+nav a {
     display: flex;
     width: 18%;
     text-decoration: none;
     align-items: center;
     justify-content: center;
 }
+
 nav button {
     margin: 5px 0;
     padding: 5px;
@@ -118,12 +134,14 @@ nav button {
     align-items: center;
     justify-content: center;
 }
-nav button:hover{
+
+nav button:hover {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background-color: rgba(255, 255, 255, 0.2);
 }
-nav button:focus{
+
+nav button:focus {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background-color: rgba(19, 14, 14, 0.2);
@@ -132,7 +150,7 @@ nav button:focus{
 
 @media(min-width : 426px) {
     .container {
-        overflow: auto;
+        /* overflow: auto; */
         scrollbar-width: none;
         /* Firefox */
         -ms-overflow-style: none;
@@ -149,29 +167,36 @@ nav button:focus{
         display: flex;
         flex-direction: row-reverse;
         flex-wrap: wrap;
-        justify-content:flex-end;
+        justify-content: flex-end;
 
     }
-    .header {
+
+    /* .header {
         display: none;
-    }
+    } */
 
     section {
         width: 89%;
         min-height: 99vh;
     }
-    .container{
+
+    .container {
         width: 80%;
     }
 
     #nav-bar {
+        padding: 0;
+    box-sizing: border-box;
+        height: 100vh;
         width: 10%;
         position: relative;
         display: flex;
         flex-direction: column;
-        min-height: 99vh;
+        /* min-height: 99vh; */
+        /* height: 100%; */
         justify-content: start;
     }
+
     #nav-bar a {
         display: flex;
         width: 90%;
@@ -187,13 +212,15 @@ nav button:focus{
 
 
 @media(min-width : 769px) {
-    section{
+    section {
         width: 83%;
     }
-    .container{
+
+    .container {
         width: 45%;
     }
-    #nav-bar{
+
+    #nav-bar {
         width: 15%;
     }
 }

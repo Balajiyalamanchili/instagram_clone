@@ -2,11 +2,12 @@
 
 .container{
     gap: 10px;
+    height: 100%;
 }
 .each-user {
     width: 100%;
     display: flex;
-    height: 60px;
+    min-height: 60px;
     flex-direction: row;
     align-items: center;
     gap: 10px;
@@ -22,6 +23,11 @@
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     text-decoration: none;
 
+}
+
+.each-user:hover{
+    transition: transform 0.1s ease, background-color 0.1s ease;
+    transform: scale(1.03);
 }
 
 
@@ -58,146 +64,8 @@ h3 {
     color: #000000;
 }
 
-.username-edit {
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.edit_profile_anchortag{
-    justify-content: flex-end;
-}
-
-.profile-edit {
-    margin: 0;
-    color: rgb(0, 0, 0);
-    padding: 0 5px;
-}
-
-
-.insights {
-    display: flex;
-    justify-content: space-between;
-}
-
-.insights-boxes {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.posts {
-    width: 100%;
-    display: flex;
-    height: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    overflow-y: auto;
-    margin-top: 20px;
-    /* border-top: 2px rgb(255, 255, 255) solid; */
-}
-
-.post-pic {
-    /* margin-top: 10px; */
-    width: 33.33%;
-    display: flex;
-    position: relative;
-}
-
-
-.post-pic div {
-    display: none;
-    
-}
-
-.post-pic:hover div {
-    display: flex;
-    position: absolute;
-    color: white;
-    font-weight: bold;
-    background-color: rgba(0, 0, 0, 0.6);
-    /* border-radius: 5px; */
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-}
-
-.posted-img {
-    width: 100%;
-    /* border: 1px solid rgb(112, 109, 109); */
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    /* border-radius: 10px; */
-}
-
-.settings{
-    margin-top: 10px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.settings a{
-    display: flex;
-    width: 30%;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-}
-.settings button {
-    margin: 5px 0;
-    padding: 5px;
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
-    /* translucent background */
-    color: #000000;
-    font-size: 1rem;
-    backdrop-filter: blur(5px);
-    /* smooth glass effect */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.settings button:hover{
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(255, 255, 255, 0.2);
-}
-.settings button:focus{
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(19, 14, 14, 0.2);
-}
-
-
-
 
 
 @media(min-width : 426px) {
-    .posts {
-        overflow: auto;
-        scrollbar-width: none;
-        /* Firefox */
-        -ms-overflow-style: none;
-        /* Internet Explorer 10+ */
-    }
 
-    .posts::-webkit-scrollbar {
-        display: none;
-        /* Chrome, Safari, Opera */
-    }
-
-    .profile-edit {
-        margin: 0;
-        width: auto;
-        align-self: end;
-    }
 }
