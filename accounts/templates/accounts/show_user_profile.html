@@ -17,7 +17,7 @@
         </div>
         <div class="user-details">
             <div class="username-edit">
-                <h3>{{request.user.username}}</h3>
+                <h3>{{user.username}}</h3>
                 <!-- <a class="edit_profile_anchortag" href="{% url 'edit_profile' %}"><button class="profile-edit">Edit</button></a> -->
             </div>
             <div class="insights">
@@ -38,11 +38,11 @@
             <div class="bio"><h3>{{user.profile.bio}}</h3></div>
         </div>
     </div>
-    <div class="settings">
+    <!-- <div class="settings">
         <a href="{% url 'edit_profile' %}"><button class="nav-buttons">Edit</button></a>
         <a href="{% url 'logout' %}"><button class="nav-buttons">Logout</button></a>
         <a href="{% url 'show_posts' %}"><button class="nav-buttons">Mode</button></a>
-    </div>
+    </div> -->
     <div class="posts">
         {% for post in user_posts %}
             <div class="post-pic">

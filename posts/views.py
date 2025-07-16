@@ -7,7 +7,6 @@ from .models import Posts
 def show_posts(request):
     posts = Posts.objects.all().order_by('-created_at')
     comment_form = CommentsForm()
-
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
         post = get_object_or_404(Posts, id=post_id)

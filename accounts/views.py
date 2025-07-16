@@ -5,6 +5,11 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.decorators import login_required
 
 from posts.models import Posts
+
+
+
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -43,6 +48,16 @@ def profile_view(request):
     posts_count = len(user_posts)
     return render(request,'accounts/profile.html',{'user_posts':user_posts , 'posts_count':posts_count})
 
+@login_required(login_url='login')
+def show_user_profile(request,username):
+    user = get_object_or_404(User, username=username)
+    user_posts = Posts.objects.filter(user=user).order_by('-created_at')
+    posts_count = len(user_posts)
+    return render(request,'accounts/show_user_profile.html',{'user_posts':user_posts , 'posts_count':posts_count, 'user':user})
+
+
+
+
 
 @login_required(login_url='login')
 def edit_profile(request):
@@ -55,3 +70,11 @@ def edit_profile(request):
     else:
         form = ProfileForm(instance=profile)
     return render(request,'accounts/edit_profile.html',{'form':form})
+
+
+
+
+@login_required(login_url='login')
+def show_all_users(request):
+    all_users = User.objects.all()
+    return render(request,'accounts/show_all_users.html',{'all_users':all_users})
