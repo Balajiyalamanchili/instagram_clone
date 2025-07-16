@@ -159,7 +159,10 @@ h3 {
     background-color: rgba(19, 14, 14, 0.2);
 }
 
-
+.no-posts{
+    width: 100%;
+    text-align: center;
+}
 
 
 
