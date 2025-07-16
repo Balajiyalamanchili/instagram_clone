@@ -8,7 +8,7 @@ import uuid
 class Posts(models.Model):
     # id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    post_img = CloudinaryField('image', blank=True, null=True)
+    post_img = CloudinaryField('image', blank=True, null=True,default='https://res.cloudinary.com/dtpo9ceis/image/upload/v1752649954/afwhofteawmgxenoxswj.jpg')
     caption = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='liked_posts', blank=True)
