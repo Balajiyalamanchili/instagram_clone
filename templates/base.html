@@ -24,7 +24,7 @@
     </section>
     <nav id="nav-bar">
         <a href="{% url 'show_posts' %}"><button class="nav-buttons">Home</button></a>
-        <a href=""><button class="nav-buttons">Reels</button></a>
+        <a href="{% url 'show_reels' %}"><button class="nav-buttons">Reels</button></a>
         <a href="{% url 'create_post' %}"><button class="nav-buttons">Add</button></a>
         <a href="{% url 'show_all_users' %}"><button class="nav-buttons">Users</button></a>
         <a href="{% url 'profile' %}"><button class="nav-buttons">Profile</button></a>

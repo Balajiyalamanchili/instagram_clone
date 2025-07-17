@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     #My Apps
     'accounts',
     'posts',
+    'reels',
 
 
     #  'cloudinary',
@@ -197,4 +198,4 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
 
-print("Using file storage:", DEFAULT_FILE_STORAGE)
+# print("Using file storage:", DEFAULT_FILE_STORAGE)

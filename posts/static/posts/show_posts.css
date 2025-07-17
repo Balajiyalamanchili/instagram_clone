@@ -29,6 +29,9 @@
     height: 30px;
     width: 95%;
 }
+.user-details a{
+    display: flex;
+}
 
 .profile-pic {
     width: 33px;
@@ -72,6 +75,7 @@ h3 {
 .caption {
     display: flex;
     width: 95%;
+    padding-bottom: 5px;
 }
 
 p {
@@ -79,6 +83,9 @@ p {
     color: black;
     align-self: center;
 
+}
+p b{
+    color: #000000;
 }
 
 
@@ -202,6 +209,10 @@ h4 {
 .each-comment {
     margin-top: 5px;
 }
+.each-comment a{
+    text-decoration: none;
+}
+
 
 textarea {
     padding: 10px;
