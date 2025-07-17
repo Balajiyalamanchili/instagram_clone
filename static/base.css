@@ -6,6 +6,30 @@
     color: rgb(255, 255, 255);
 }
 
+
+.blur-body {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none;
+    top: 0;
+    position: absolute;
+
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: #000000;
+    font-weight: 100;
+    font-size: 50px;
+}
+
+
+
 @font-face {
     font-family: 'Flood Std';
     src: url('fonts/FloodStdRegular.otf') format('truetype');
@@ -186,7 +210,7 @@ nav button:focus {
 
     #nav-bar {
         padding: 0;
-    box-sizing: border-box;
+        box-sizing: border-box;
         height: 100vh;
         width: 10%;
         position: relative;
@@ -218,6 +242,7 @@ nav button:focus {
 
     .container {
         width: 45%;
+        max-width: 500px;
     }
 
     #nav-bar {
