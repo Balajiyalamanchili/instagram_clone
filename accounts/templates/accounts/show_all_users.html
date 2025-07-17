@@ -19,7 +19,17 @@
         </div>
         <div class="user-details">
             <h3>{{user.username}}</h3>
+            {% if request.user in user.profile.followers.all %}
+            <h3 style="color: green;">Following</h3>
+            {% endif %}
+            
         </div>
+        
+        <!-- <div class="following">
+            {% if request.user in user.profile.followers.all %}
+            <h3 style="color: green;">Following</h3>
+            {% endif %}
+        </div> -->
 
     </a>
     {% endfor %}

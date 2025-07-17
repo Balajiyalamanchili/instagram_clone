@@ -48,3 +48,21 @@ def like_post(request, post_id):
         post.likes.add(request.user)
         print(f"{request.user} liked the post")
     return redirect('show_posts')
+
+
+
+
+@login_required(login_url='login')
+def delete_post(request,post_id):
+    post = Posts.objects.get(id=post_id)
+    post.delete()
+    return redirect('profile')
+# def like_post(request, post_id):
+#     post = Posts.objects.get(id=post_id)
+#     if request.user in post.likes.all():
+#         post.likes.remove(request.user)
+#         print(f"{request.user} unliked the post",post.likes,post.id)
+#     else:
+#         post.likes.add(request.user)
+#         print(f"{request.user} liked the post")
+#     return redirect('show_posts')

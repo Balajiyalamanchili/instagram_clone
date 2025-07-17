@@ -7,7 +7,6 @@ from django.contrib.auth.decorators import login_required
 from posts.models import Posts
 
 
-
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 # Create your views here.
@@ -55,6 +54,34 @@ def show_user_profile(request,username):
     posts_count = len(user_posts)
     return render(request,'accounts/show_user_profile.html',{'user_posts':user_posts , 'posts_count':posts_count, 'user':user})
 
+@login_required(login_url='login')
+def follow_unfollow(request,follow_id):
+    current_user = request.user
+    current_user_profile = Profile.objects.get(user=current_user)
+
+    target_user = User.objects.get(id=follow_id)
+    target_user_profile = Profile.objects.get(user=target_user)
+
+
+    if current_user in target_user_profile.followers.all():
+        target_user_profile.followers.remove(current_user)
+        current_user_profile.following.remove(target_user)
+    else:
+        target_user_profile.followers.add(current_user)
+        current_user_profile.following.add(target_user)
+
+
+    return redirect('show_user_profile', username=target_user_profile.user)
+
+# def like_post(request, post_id):
+#     post = Posts.objects.get(id=post_id)
+#     if request.user in post.likes.all():
+#         post.likes.remove(request.user)
+#         print(f"{request.user} unliked the post",post.likes,post.id)
+#     else:
+#         post.likes.add(request.user)
+#         print(f"{request.user} liked the post")
+#     return redirect('show_posts')
 
 
 
@@ -72,9 +99,8 @@ def edit_profile(request):
     return render(request,'accounts/edit_profile.html',{'form':form})
 
 
-
-
 @login_required(login_url='login')
 def show_all_users(request):
     all_users = User.objects.all()
     return render(request,'accounts/show_all_users.html',{'all_users':all_users})
+

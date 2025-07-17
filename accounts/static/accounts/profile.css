@@ -89,12 +89,12 @@ h3 {
 }
 
 
-.post-pic div {
+.post-pic .hover-div {
     display: none;
     
 }
 
-.post-pic:hover div {
+.post-pic:hover .hover-div {
     display: flex;
     position: absolute;
     color: white;
@@ -105,7 +105,50 @@ h3 {
     height: 100%;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
+.delete-form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.delete-form a{
+    display: flex;
+    width: 50%;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+}
+.delete-form button {
+    margin: 5px 0;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 0, 0, 0.6);
+    /* translucent background */
+    color: #ffffff;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    /* smooth glass effect */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delete-form button:hover{
+    transform: scale(1.09);
+    
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(248, 10, 10, 1.2);
+}
+
+
+
 
 .posted-img {
     width: 100%;
