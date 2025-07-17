@@ -228,4 +228,14 @@ h3 {
         width: auto;
         align-self: end;
     }
+
+}
+
+@media(min-width : 1025px) {
+    .user-details {
+    width: 80%;
+}
+.insights{
+    width: 70%;
+}
 }
