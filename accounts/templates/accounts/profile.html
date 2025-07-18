@@ -47,19 +47,6 @@
         <a href="{% url 'edit_profile' %}"><button class="nav-buttons">Edit</button></a>
         <a href="{% url 'logout' %}"><button class="nav-buttons">Logout</button></a>
         <a><button class="nav-buttons dark-mode-toggle">Mode</button></a>
-        <style>
-            .dark-mode section {
-                background: black !important;
-                color: white;
-            }
-        </style>
-        <script>
-            const toggleBtn = document.querySelector('.dark-mode-toggle');
-            toggleBtn.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-            });
-        </script>
-
     </div>
     <div class="posts">
         {% for post in user_posts %}
