@@ -7,6 +7,7 @@
 
 {% block section %}
 <div class="container">
+    <input type="text" id="userSearch" placeholder="Search users...">
     {% for user in all_users %}
     <a class="each-user" href="{% url 'show_user_profile' user.username %}">
         <div class="profile-pic">
@@ -22,18 +23,30 @@
             {% if request.user in user.profile.followers.all %}
             <h3 style="color: green;">Following</h3>
             {% endif %}
-            
+
         </div>
-        
-        <!-- <div class="following">
-            {% if request.user in user.profile.followers.all %}
-            <h3 style="color: green;">Following</h3>
-            {% endif %}
-        </div> -->
 
     </a>
     {% endfor %}
 </div>
+<script>
+    const searchInput = document.getElementById('userSearch');
+
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase();
+        const users = document.querySelectorAll('.each-user');
+
+        users.forEach(user => {
+            const username = user.querySelector('h3').textContent.toLowerCase();
+
+            if (username.includes(query)) {
+                user.style.display = '';
+            } else {
+                user.style.display = 'none';
+            }
+        });
+    });
+</script>
 
 
 {% endblock %}
