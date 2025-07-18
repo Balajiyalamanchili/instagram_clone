@@ -4,7 +4,7 @@
 {% block head %}
 <title>Posts</title>
 <link rel="stylesheet" href="{% static 'posts/show_posts.css' %}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> -->
 {% endblock %}
 
 
@@ -27,7 +27,7 @@
   }
 
   .container {
-
+    height: 90vh !important;
     /* height: 100vh; */
     /* width: 100%; */
     padding: 0px;
@@ -39,17 +39,16 @@
     /* border-right: 1px gray solid !important;
     border-top: 0px gray solid !important;
     border-bottom: 0px gray solid !important; */
-
-
-
+    margin-bottom: 50px !important;
   }
 
   .video-wrapper {
     scroll-snap-align: start;
     border-radius: 10px;
-    min-height: 94vh;
+    min-height: 100%;
     width: 100%;
     position: relative;
+    border-bottom: 1pc solid black;
   }
 
   video {
@@ -60,8 +59,8 @@
 
     object-fit: contain;
     display: block;
-    /* margin: 0 auto; */
-    background-color: black;
+    margin: auto;
+    background-color: rgb(54, 53, 53);
     /* optional, for black bars */
   }
 </style>
