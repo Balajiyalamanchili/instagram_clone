@@ -2,6 +2,11 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm,CommentsForm
 from .models import Posts
+
+#ajax like try
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+
 # Create your views here.
 
 def show_posts(request):
@@ -38,36 +43,7 @@ def create_post(request):
 
 
 
-@login_required(login_url='login')
-def like_post(request, post_id):
-    post = Posts.objects.get(id=post_id)
-    if request.user in post.likes.all():
-        post.likes.remove(request.user)
-        print(f"{request.user} unliked the post",post.likes,post.id)
-    else:
-        post.likes.add(request.user)
-        print(f"{request.user} liked the post")
-    return redirect('show_posts')
-
-
-
-
 # @login_required(login_url='login')
-# def delete_post(request,post_id):
-#     post = Posts.objects.get(id=post_id)
-#     post.delete()
-#     return redirect('profile')
-
-
-@login_required(login_url='login')
-def delete_post(request, post_id):
-    try:
-        post = Posts.objects.get(id=post_id)
-        post.delete()
-    except Posts.DoesNotExist:
-        pass  # Post already deleted or doesn't exist
-    return redirect('profile')
-
 # def like_post(request, post_id):
 #     post = Posts.objects.get(id=post_id)
 #     if request.user in post.likes.all():
@@ -77,3 +53,38 @@ def delete_post(request, post_id):
 #         post.likes.add(request.user)
 #         print(f"{request.user} liked the post")
 #     return redirect('show_posts')
+
+#ajax like trail
+@require_POST
+@login_required
+def like_post(request, post_id):
+    post = Posts.objects.get(id=post_id)
+    user = request.user
+
+    liked = False
+    if user in post.likes.all():
+        post.likes.remove(user)
+    else:
+        post.likes.add(user)
+        liked = True
+
+    return JsonResponse({
+        'liked': liked,
+        'likes_count': post.likes.count(),
+    })
+
+
+# @login_required(login_url='login')
+# def delete_post(request,post_id):
+#     post = Posts.objects.get(id=post_id)
+#     post.delete()
+#     return redirect('profile')
+
+@login_required(login_url='login')
+def delete_post(request, post_id):
+    try:
+        post = Posts.objects.get(id=post_id)
+        post.delete()
+    except Posts.DoesNotExist:
+        pass  # Post already deleted or doesn't exist
+    return redirect('profile')

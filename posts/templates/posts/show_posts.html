@@ -27,6 +27,16 @@
                     </div>
                     <h3 class="name">{{post.user.username}}</h3>
                 </a>
+                <div class="settings">
+                    <form class="settings" method="post" action="{% url 'follow_unfollow' post.user.id %}">
+                        {% csrf_token %}
+                        {% if request.user in post.user.profile.followers.all %}
+                        <a><button class="nav-buttons" type="submit">Unfollow</button></a>
+                        {% else %}
+                        <a><button class="nav-buttons" type="submit">Follow</button></a>
+                        {% endif %}
+                    </form>
+                </div>
             </div>
             <div class="post-pic">
                 {% if post.post_img.url %}
@@ -38,7 +48,7 @@
             </div>
 
             <div class="like-comment-space">
-                <div class="like">
+                <!-- <div class="like">
                     <form method="post" action="{% url 'like_post' post.id %}">
                         {% csrf_token %}
                         {% if user in post.likes.all %}
@@ -48,8 +58,18 @@
                         {% endif %}
                     </form>
                     <h4>{{ post.total_likes }} likes</h4>
+                </div> -->
+                <div class="like">
+                    <button style="background: none; border: 0;" class="like-btn" data-post-id="{{ post.id }}"
+                        data-liked="{% if user in post.likes.all %}true{% else %}false{% endif %}">
+                        {% if user in post.likes.all %}
+                        <i class="fa-solid fa-heart gradient-icon liked"></i>
+                        {% else %}
+                        <i class="fa-regular fa-heart notliked"></i>
+                        {% endif %}
+                    </button>
+                    <h4 id="likes-count-{{ post.id }}">{{ post.likes.count }} likes</h4>
                 </div>
-
 
                 <div class="post-wrapper">
                     <input type="checkbox" id="comment-toggle-{{post.id}}" hidden>
@@ -115,5 +135,38 @@
     </div>
 </div>
 
+
+<script>
+  const csrfToken = '{{ csrf_token }}';
+
+  document.querySelectorAll('.like-btn').forEach(button => {
+    button.addEventListener('click', function () {
+      const postId = this.dataset.postId;
+
+      fetch(`/like-post/${postId}/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': csrfToken,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(res => res.json())
+      .then(data => {
+        const likeIcon = this.querySelector('i');
+        const likeCountEl = document.getElementById(`likes-count-${postId}`);
+
+        // Update icon
+        if (data.liked) {
+          likeIcon.className = "fa-solid fa-heart gradient-icon";
+        } else {
+          likeIcon.className = "fa-regular fa-heart";
+        }
+
+        // Update like count
+        likeCountEl.textContent = `${data.likes_count} likes`;
+      });
+    });
+  });
+</script>
 
 {% endblock %}

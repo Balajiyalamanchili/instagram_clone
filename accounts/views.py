@@ -69,9 +69,8 @@ def follow_unfollow(request,follow_id):
     else:
         target_user_profile.followers.add(current_user)
         current_user_profile.following.add(target_user)
-
-
-    return redirect('show_user_profile', username=target_user_profile.user)
+    return redirect(request.META.get('HTTP_REFERER', 'home'))
+    # return redirect('show_user_profile', username=target_user_profile.user)
 
 # def like_post(request, post_id):
 #     post = Posts.objects.get(id=post_id)
