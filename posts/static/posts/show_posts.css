@@ -78,13 +78,13 @@ h3 {
     padding-bottom: 5px;
 }
 
-p {
-    padding-left: 5px;
+.caption p {
+    /* padding-left: 5px; */
     color: black;
-    align-self: center;
+    /* align-self: center; */
 
 }
-p b{
+.caption p b{
     color: #000000;
 }
 
@@ -208,10 +208,43 @@ h4 {
 
 .each-comment {
     margin-top: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
+
+.comment-profile-pic {
+    width: 33px;
+    height: 33px;
+    display: flex;
+}
+
+.comment-profile-img {
+    border-radius: 100px;
+    border: 1px solid rgb(63, 60, 60);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.comment-content{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.comment-content p{
+    color :black;
+}
+
 .each-comment a{
     text-decoration: none;
 }
+
+
+
+
+
+
 
 
 textarea {

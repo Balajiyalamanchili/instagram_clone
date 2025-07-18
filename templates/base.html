@@ -33,16 +33,30 @@
         <a href="{% url 'profile' %}"><button class="nav-buttons">Profile</button></a>
     </nav>
     <script>
-        let navbar = document.getElementById('nav-bar')
-        console.log('hi')
+        
+        // let navbar = document.getElementById('nav-bar');
+        let navbar = document.querySelector('body')
+        let commentinput  = document.getElementById('id_content')
         navbar.addEventListener('click', (event) => {
-            // console.log(event.target.className)
-            if (event.target.className == 'nav-buttons') {
-                let blur = document.querySelector('.blur-body')
-                blur.style.display = 'flex'
+            console.log(event.target.className)
+            console.log(commentinput.value)
+            if (['nav-buttons','liked','notliked','fa-regular fa-heart','fa-solid fa-heart gradient-icon'].includes(event.target.className) || (event.target.className==='submit-comment' && commentinput.value!='' )) {
+                let blur = document.querySelector('.blur-body');
+                if (blur) {
+                    blur.style.display = 'flex';
+                }
             }
+        });
 
-        })
+        // Fix blur sticking on browser back
+        window.onpageshow = function (event) {
+            if (event.persisted) {
+                let blur = document.querySelector('.blur-body');
+                if (blur) {
+                    blur.style.display = 'none';
+                }
+            }
+        };
     </script>
 </body>
 
