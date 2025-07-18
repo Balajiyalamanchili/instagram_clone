@@ -52,11 +52,22 @@ def like_post(request, post_id):
 
 
 
+# @login_required(login_url='login')
+# def delete_post(request,post_id):
+#     post = Posts.objects.get(id=post_id)
+#     post.delete()
+#     return redirect('profile')
+
+
 @login_required(login_url='login')
-def delete_post(request,post_id):
-    post = Posts.objects.get(id=post_id)
-    post.delete()
+def delete_post(request, post_id):
+    try:
+        post = Posts.objects.get(id=post_id)
+        post.delete()
+    except Posts.DoesNotExist:
+        pass  # Post already deleted or doesn't exist
     return redirect('profile')
+
 # def like_post(request, post_id):
 #     post = Posts.objects.get(id=post_id)
 #     if request.user in post.likes.all():
