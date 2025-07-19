@@ -52,6 +52,7 @@ def profile_view(request):
     posts_count = len(user_posts)
     return render(request,'accounts/profile.html',{'user_posts':user_posts , 'posts_count':posts_count})
 
+
 @login_required(login_url='login')
 def show_user_profile(request,username):
     user = get_object_or_404(User, username=username)
@@ -136,29 +137,6 @@ def show_all_users(request):
             'all_users': [],
             'error_message': error_message
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

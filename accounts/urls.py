@@ -14,6 +14,9 @@ urlpatterns =[
     path('edit/', views.edit_profile, name='edit_profile'),
 
 
+
+
+
     path("ping/", views.ping_view, name="ping"),
 
 ]

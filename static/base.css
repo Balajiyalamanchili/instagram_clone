@@ -77,7 +77,6 @@ section {
 
 .container {
     background-color: rgba(255, 255, 255, 0.1);
-
     /* transparent white */
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -92,7 +91,7 @@ section {
     overflow-y: scroll;
     scroll-behavior: smooth;
     width: 92%;
-    max-height: 96vh;
+    height: 96vh;
 }
 
 h1 {

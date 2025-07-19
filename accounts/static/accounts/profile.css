@@ -45,7 +45,7 @@ h3 {
 
 }
 
-.edit_profile_anchortag{
+.edit_profile_anchortag {
     justify-content: flex-end;
 }
 
@@ -91,7 +91,7 @@ h3 {
 
 .post-pic .hover-div {
     display: none;
-    
+
 }
 
 .post-pic:hover .hover-div {
@@ -107,20 +107,22 @@ h3 {
     justify-content: center;
     flex-direction: column;
 }
-.delete-form{
+
+.delete-form {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.delete-form a{
+.delete-form a {
     display: flex;
     width: 50%;
     text-decoration: none;
     align-items: center;
     justify-content: center;
 }
+
 .delete-form button {
     margin: 5px 0;
     padding: 5px;
@@ -139,9 +141,10 @@ h3 {
     align-items: center;
     justify-content: center;
 }
-.delete-form button:hover{
+
+.delete-form button:hover {
     transform: scale(1.09);
-    
+
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background-color: rgba(248, 10, 10, 1.2);
@@ -158,7 +161,7 @@ h3 {
     /* border-radius: 10px; */
 }
 
-.settings{
+.settings {
     margin-top: 10px;
     width: 100%;
     display: flex;
@@ -166,13 +169,14 @@ h3 {
 }
 
 
-.settings a{
+.settings a {
     display: flex;
     width: 30%;
     text-decoration: none;
     align-items: center;
     justify-content: center;
 }
+
 .settings button {
     margin: 5px 0;
     padding: 5px;
@@ -191,21 +195,132 @@ h3 {
     align-items: center;
     justify-content: center;
 }
-.settings button:hover{
+
+.settings button:hover {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background-color: rgba(255, 255, 255, 0.2);
 }
-.settings button:focus{
+
+.settings button:focus {
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
     background-color: rgba(19, 14, 14, 0.2);
 }
 
-.no-posts{
+.no-posts {
     width: 100%;
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+#following,
+#followers {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100% !important;
+    gap: 10px;
+    width: 95% !important;
+    padding: 10px !important;
+    margin-top: 0 !important;
+    /* box-sizing: border-box; */
+
+}
+
+
+.simsim .each-user {
+    width: 100%;
+    display: flex;
+    min-height: 60px;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border-radius: 100px 100px 100px 100px;
+    /* justify-content: space-between; */
+    background-color: aliceblue;
+    /* background: linear-gradient(135deg, #feda75 0%, #fa7e1e 25%, #d62976 50%, #962fbf 75%, #4f5bd5 100%) no-repeat; */
+    animation: darkInstaGradient 30s ease infinite;
+    background: rgb(255, 255, 255);
+
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+
+}
+
+.simsim .each-user:hover {
+    transition: transform 0.1s ease, background-color 0.1s ease;
+    transform: scale(1.03);
+}
+
+
+
+
+.simsim .profile-pic {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin-left: 5px;
+}
+
+.simsim .profile-img {
+    width: 100%;
+    border-radius: 100px;
+    border: 1px solid rgb(63, 60, 60);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+
+.simsim .user-details {
+    width: 70%;
+    height: 100%;
+    /* margin-left: 10px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-content: center;
+    /* gap: 5px; */
+}
+
+.simsim h3 {
+    color: #000000;
+}
+
+
+
+.close-followers , .close-following {
+    margin: 5px 0;
+    padding: 5px;
+    width: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* translucent background */
+    color: #000000;
+    font-size: 1rem;
+    backdrop-filter: blur(5px);
+    /* smooth glass effect */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 
 
@@ -233,9 +348,10 @@ h3 {
 
 @media(min-width : 1025px) {
     .user-details {
-    width: 78%;
-}
-.insights{
-    width: 90%;
-}
+        width: 78%;
+    }
+
+    .insights {
+        width: 90%;
+    }
 }
