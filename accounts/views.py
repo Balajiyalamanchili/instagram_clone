@@ -136,3 +136,35 @@ def show_all_users(request):
             'all_users': [],
             'error_message': error_message
         })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# using to active my website fake ping
+from django.http import HttpResponse
+
+def ping_view(request):
+    return HttpResponse("pong")

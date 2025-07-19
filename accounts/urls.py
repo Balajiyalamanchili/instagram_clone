@@ -12,6 +12,10 @@ urlpatterns =[
     path('show_all_users/',views.show_all_users,name='show_all_users'),
     path('logout/', views.logout_view, name='logout'),
     path('edit/', views.edit_profile, name='edit_profile'),
+
+
+    path("ping/", views.ping_view, name="ping"),
+
 ]
 
  
