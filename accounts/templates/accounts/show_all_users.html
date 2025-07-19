@@ -6,6 +6,16 @@
 {% endblock %}
 
 {% block section %}
+
+{% if error_message %}
+<div style="padding: 10px; background-color: #df281a; color: white; border-radius: 5px; margin-bottom: 15px;">
+  ⚠️ {{ error_message }}
+</div>
+<script>
+    alert('error occured!!!')
+</script>
+{% endif %}
+
 <div class="container">
     <input type="text" id="userSearch" placeholder="Search users...">
     {% for user in all_users %}

@@ -21,8 +21,9 @@ def register_view(request):
             return redirect('profile')
     else:
         form  = RegisterForm()
-
     return render(request,'accounts/register.html',{'form':form})
+
+
 
 def login_view(request):
     if request.method == 'POST':
@@ -39,6 +40,10 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+
+
+
 
 
 @login_required(login_url='login')
@@ -72,6 +77,7 @@ def follow_unfollow(request,follow_id):
     return redirect(request.META.get('HTTP_REFERER', 'home'))
     # return redirect('show_user_profile', username=target_user_profile.user)
 
+
 # def like_post(request, post_id):
 #     post = Posts.objects.get(id=post_id)
 #     if request.user in post.likes.all():
@@ -98,8 +104,35 @@ def edit_profile(request):
     return render(request,'accounts/edit_profile.html',{'form':form})
 
 
+from django.http import JsonResponse, HttpResponseServerError
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+# @login_required(login_url='login')
+# def show_all_users(request):
+#     try:
+#         # Test line to simulate an exception
+#         raise Exception("Test exception for review")
+#         all_users = User.objects.all()
+#         return render(request, 'accounts/show_all_users.html', {'all_users': all_users}, status=200)
+#     except Exception as e:
+#         logger.error(f"Error fetching users: {str(e)}")
+#         return HttpResponseServerError("Internal Server Error. Please try again later.")
+
+
+
+
 @login_required(login_url='login')
 def show_all_users(request):
-    all_users = User.objects.all()
-    return render(request,'accounts/show_all_users.html',{'all_users':all_users})
-
+    try:
+        # raise Exception("Test exception")
+        all_users = User.objects.all()
+        return render(request, 'accounts/show_all_users.html', {'all_users': all_users})
+    except Exception as e:
+        error_message = "Something went wrong while loading users. Pls reload the page."
+        return render(request, 'accounts/show_all_users.html', {
+            'all_users': [],
+            'error_message': error_message
+        })

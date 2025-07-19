@@ -128,7 +128,13 @@
 
             <div class="caption">
                 <!-- <h3 class="name">{{post.user.username}}</h3> -->
-                <p><b>@{{post.user.username}} :</b> {{post.caption}}</p>
+                <p><b>@{{post.user.username}} :</b>
+                    {% if post.caption %}
+                     {{post.caption}}
+                     {% else %}
+                     no caption posted
+                     {% endif %}
+                    </p>
             </div>
         </div>
         {% endfor%}

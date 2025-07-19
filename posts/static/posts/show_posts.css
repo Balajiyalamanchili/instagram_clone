@@ -92,7 +92,7 @@ h3 {
 .settings button:hover{
     outline: none;
     border-color: rgba(255, 255, 255, 0.6);
-    background-color: rgba(0, 102, 255, 0.8);
+    background-color: rgba(0, 102, 255, 0.5);
 }
 /* .settings button:focus{
     outline: none;
@@ -337,11 +337,6 @@ textarea {
     /* position: absolute; */
     bottom: 0;
 }
-
-
-
-
-
 
 
 
