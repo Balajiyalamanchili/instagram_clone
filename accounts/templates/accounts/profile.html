@@ -74,7 +74,8 @@
 
 
     <div id="followers" class="container simsim">
-        <p>Followers</p>
+        <h2>Followers</h2>
+        <!-- <p>Followers</p> -->
         <button class="close-followers">❌ Close</button>
         {% for i in user.profile.followers.all %}
         <a class="each-user" href="{% url 'show_user_profile' i.username %}">
@@ -98,7 +99,8 @@
 
 
     <div id="following" class="container simsim">
-        <p>Following</p>
+        <h2>Following</h2>
+        <!-- <p>Following</p> -->
         <button class="close-following">❌ Close</button>
         {% for i in user.profile.following.all %}
         <a class="each-user" href="{% url 'show_user_profile' i.username %}">
