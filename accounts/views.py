@@ -9,6 +9,11 @@ from posts.models import Posts
 
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+
+
+from django.views.decorators.http import require_POST
+from .documents import UserDocument
+from elasticsearch_dsl.query import MultiMatch
 # Create your views here.
 
 
@@ -137,6 +142,35 @@ def show_all_users(request):
             'all_users': [],
             'error_message': error_message
         })
+    
+
+
+
+from elasticsearch_dsl.query import Match
+@require_POST
+@login_required(login_url='login')
+def show_all(request,value_entered):
+    # print(value_entered)
+    query = value_entered
+    if query!= 'it_is_empty':
+        # es_query = MultiMatch(
+        #     query=query,
+        #     fields=['username'],
+        #     fuzziness='AUTO'
+        # )
+        es_query = Match(username={"query": query, "operator": "and"})
+        es_results = UserDocument.search().query(es_query)[:1000]
+        user_names = [obj.username for obj in es_results]
+    else:
+        user_names= list(User.objects.values_list('username', flat=True))
+        print(user_names)
+    all_user_names = list(User.objects.values_list('username', flat=True))
+    
+
+    return JsonResponse({
+        'res':user_names,
+        'all':all_user_names,
+    })
 
 
 

@@ -9,7 +9,7 @@
 
 {% if error_message %}
 <div style="padding: 10px; background-color: #df281a; color: white; border-radius: 5px; margin-bottom: 15px;">
-  ⚠️ {{ error_message }}
+    ⚠️ {{ error_message }}
 </div>
 <script>
     alert('error occured!!!')
@@ -19,7 +19,7 @@
 <div class="container">
     <input type="text" id="userSearch" placeholder="Search users...">
     {% for user in all_users %}
-    <a class="each-user" href="{% url 'show_user_profile' user.username %}">
+    <a class="each-user" id="{{user.username}}" href="{% url 'show_user_profile' user.username %}">
         <div class="profile-pic">
             {% if user.profile.profile_pic %}
             <img class="profile-img" src="{{ user.profile.profile_pic.url }}" alt="profile pic" />
@@ -40,22 +40,106 @@
     {% endfor %}
 </div>
 <script>
-    const searchInput = document.getElementById('userSearch');
+    // const searchInput = document.getElementById('userSearch');
 
-    searchInput.addEventListener('input', function () {
-        const query = this.value.toLowerCase();
-        const users = document.querySelectorAll('.each-user');
+    // searchInput.addEventListener('input', function () {
+    //     const query = this.value.toLowerCase();
+    //     const users = document.querySelectorAll('.each-user');
 
-        users.forEach(user => {
-            const username = user.querySelector('h3').textContent.toLowerCase();
+    //     users.forEach(user => {
+    //         const username = user.querySelector('h3').textContent.toLowerCase();
 
-            if (username.includes(query)) {
-                user.style.display = '';
-            } else {
-                user.style.display = 'none';
+    //         if (username.includes(query)) {
+    //             user.style.display = '';
+    //         } else {
+    //             user.style.display = 'none';
+    //         }
+    //     });
+    // });
+
+
+    // const csrfToken = '{{ csrf_token }}';
+    // const searchInput = document.getElementById('userSearch');
+
+    // searchInput.addEventListener('input',async event => {
+    //     name_input = searchInput.value;
+    //     if(!name_input){
+    //         name_input='it_is_empty'
+    //     }
+    //     await fetch(`/show_all/${name_input}/`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'X-CSRFToken': csrfToken,
+    //             'Content-Type': 'application/json',
+    //         },
+    //     }).then(data=>{
+    //         return data.json()
+    //     }).then(result=>{
+    //         for(let user of result['all']){
+    //             let eachUser = document.getElementById(`${user}`)
+    //             eachUser.style.display='none'
+    //         }
+    //         for(let user of result['res']){
+    //             let eachUser = document.getElementById(`${user}`)
+    //             eachUser.style.display='flex'
+    //             // console.log(user)
+    //         }
+    //     })
+    // })
+
+
+    const csrfToken = '{{ csrf_token }}';
+    let currentController = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('userSearch');
+        if (!searchInput) return;
+
+        searchInput.addEventListener('input', async () => {
+            const name_input = searchInput.value || "it_is_empty";
+
+            // Cancel previous request if still pending
+            if (currentController) {
+                currentController.abort();
+            }
+
+            // Create new controller for this fetch
+            currentController = new AbortController();
+
+            try {
+                const response = await fetch(`/show_all/${name_input}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/json',
+                    },
+                    signal: currentController.signal,
+                });
+
+                const result = await response.json();
+
+                // Hide all users
+                for (let user of result['all']) {
+                    const eachUser = document.getElementById(`${user}`);
+                    if (eachUser) eachUser.style.display = 'none';
+                }
+
+                // Show matching users
+                for (let user of result['res']) {
+                    const eachUser = document.getElementById(`${user}`);
+                    if (eachUser) eachUser.style.display = 'flex';
+                }
+
+            } catch (err) {
+                if (err.name === 'AbortError') {
+                    // Ignore aborted request
+                    return;
+                }
+                console.error('Fetch error:', err);
             }
         });
     });
+
 </script>
 
 
